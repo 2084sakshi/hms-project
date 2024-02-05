@@ -1,7 +1,7 @@
 # .gitignore
 
 # Ignore node_modules in the client directory
-mini-project/client/node_modules/
+/mini project/client/node_modules/
 
 
 # Ignore node_modules in the mini project directory
