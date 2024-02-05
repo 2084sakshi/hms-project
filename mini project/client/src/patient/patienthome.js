@@ -1,16 +1,16 @@
 // src/patient/PatientHome.js
 
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+
 
 const PatientHome = () => {
-  const history = useHistory();
 
+/*
   const handleLogout = () => {
     // Perform any logout logic here
     // For now, let's just redirect to pages/home.js
     history.push('/pages/home.js');
-  };
+  };*/
 
   return (
     <div className="container">

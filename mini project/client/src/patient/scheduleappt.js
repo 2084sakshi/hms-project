@@ -37,23 +37,23 @@ const ScheduleAppointment = () => {
     <div className="container">
       <h2>Schedule Appointment</h2>
       <p>Empower your health journey by scheduling a new appointment. Choose the perfect date, time, and healthcare professional below:</p>
-
+      <br>  </br>
       <form onSubmit={handleFormSubmit}>
         <label>
           Date:
           <input type="date" name="date" value={formData.date} onChange={handleInputChange} required />
         </label>
-
+<br>  </br>
         <label>
           Time:
           <input type="time" name="time" value={formData.time} onChange={handleInputChange} required />
         </label>
-
+        <br>  </br>
         <label>
           Doctor:
           <input type="text" name="doctor" value={formData.doctor} onChange={handleInputChange} required />
         </label>
-
+        <br>  </br>
         {/* Add more form fields as needed (e.g., reason for appointment) */}
 
         <button type="submit">Schedule Appointment</button>
