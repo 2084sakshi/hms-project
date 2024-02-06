@@ -1,37 +1,65 @@
-// src/patient/ViewMedicalHistory.js
+// MedicalHistory.js
+import React from 'react';
+import PatientHeader from './patientheader';
 
-import React, { useState, useEffect } from 'react';
-
-const ViewMedicalHistory = () => {
-  // Mock medical history data (replace with actual API calls)
-  const [medicalHistory, setMedicalHistory] = useState([
-    { date: '2023-01-15', diagnosis: 'Common Cold', treatment: 'Prescription: Rest and fluids' },
-    { date: '2023-04-02', diagnosis: 'Sprained Ankle', treatment: 'Prescription: Pain relievers, Rest, Ice, Compression, Elevation (RICE)' },
-    // Add more medical history entries as needed
-  ]);
-
-  useEffect(() => {
-    // Fetch medical history data from API and update state
-    // Example: fetchMedicalHistoryData().then(data => setMedicalHistory(data));
-  }, []);
+function MedicalHistory() {
+  // Mock data for demonstration purposes
+  const medicalHistoryData = {
+    diagnoses: [
+      { name: 'Flu', date: '2023-03-15' },
+      { name: 'Hypertension', date: '2022-08-20' },
+    ],
+    treatments: [
+      { name: 'Antibiotics', date: '2023-03-20' },
+      { name: 'Blood Pressure Medication', date: '2022-09-01' },
+    ],
+    medications: [
+      { name: 'Aspirin', dosage: '75mg', frequency: 'Once a day' },
+      { name: 'Ibuprofen', dosage: '200mg', frequency: 'As needed' },
+    ],
+  };
 
   return (
-    <div className="container">
-      <h2>Medical History</h2>
-      <p>Explore and review your comprehensive medical history below:</p>
+    <div>
+      <PatientHeader />
+      <div>
+        <h2>Your Medical History</h2>
 
-      <div id="medical-history-list">
-        {medicalHistory.map((entry, index) => (
-          <div key={index} className="medical-entry">
-            <strong>Date:</strong> {entry.date}<br />
-            <strong>Diagnosis:</strong> {entry.diagnosis}<br />
-            <strong>Treatment:</strong> {entry.treatment}<br />
-            <hr />
-          </div>
-        ))}
+        <section>
+          <h3>Diagnoses</h3>
+          <ul>
+            {medicalHistoryData.diagnoses.map((diagnosis, index) => (
+              <li key={index}>
+                <strong>{diagnosis.name}</strong> diagnosed on {diagnosis.date}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h3>Treatments</h3>
+          <ul>
+            {medicalHistoryData.treatments.map((treatment, index) => (
+              <li key={index}>
+                <strong>{treatment.name}</strong> started on {treatment.date}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h3>Medications</h3>
+          <ul>
+            {medicalHistoryData.medications.map((medication, index) => (
+              <li key={index}>
+                <strong>{medication.name}</strong> - Dosage: {medication.dosage}, Frequency: {medication.frequency}
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );
 }
 
-export default ViewMedicalHistory;
+export default MedicalHistory;

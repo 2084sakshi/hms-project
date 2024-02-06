@@ -1,31 +1,47 @@
-// PatientAppointments.js
+// ViewAppointment.js
+import React from 'react';
+import PatientHeader from './patientheader';
 
-import React, { useEffect, useState } from 'react';
-// Define your React component
-function PatientAppointments() {
-    const appointments = [
-      { id: 1, date: "2024-02-10", time: "10:00 AM", doctor: "Dr. Smith" },
-      { id: 2, date: "2024-02-15", time: "02:30 PM", doctor: "Dr. Johnson" },
-      // Add more appointments as needed
-    ];
-  
-    return (
-      <div className="container">
+function ViewAppointment() {
+  // Mock data for demonstration purposes
+  const appointments = [
+    { date: '2024-02-10', startTime: '10:00 AM', endTime: '11:00 AM', doctor: 'Dr. Smith', status: 'Confirmed' },
+    { date: '2024-02-15', startTime: '02:30 PM', endTime: '03:30 PM', doctor: 'Dr. Johnson', status: 'Pending' },
+    // Add more appointments as needed
+  ];
+
+  return (
+    <div>
+      <PatientHeader />
+      <div>
         <h2>Your Appointments</h2>
-        <div id="appointments-list">
-          {appointments.map(appointment => (
-            <div key={appointment.id} className="appointment">
-              <strong>Appointment ID:</strong> {appointment.id}<br />
-              <strong>Date:</strong> {appointment.date}<br />
-              <strong>Time:</strong> {appointment.time}<br />
-              <strong>Doctor:</strong> {appointment.doctor}<br />
-            </div>
-          ))}
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Doctor</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {appointments.map((appointment, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{appointment.date}</td>
+                <td>{appointment.startTime}</td>
+                <td>{appointment.endTime}</td>
+                <td>{appointment.doctor}</td>
+                <td>{appointment.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    );
-  }
-  
- 
-  
-export default PatientAppointments;
+    </div>
+  );
+}
+
+export default ViewAppointment;

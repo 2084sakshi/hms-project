@@ -1,65 +1,57 @@
-// src/patient/ScheduleAppointment.js
-
+// AppointmentBooking.js
 import React, { useState } from 'react';
+import PatientHeader from './patientheader';
 
-const ScheduleAppointment = () => {
-  // State to store form input values
-  const [formData, setFormData] = useState({
-    date: '',
-    time: '',
-    doctor: '',
-    // Add more fields as needed
-  });
+function AppointmentBooking() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedDoctor, setSelectedDoctor] = useState('');
 
-  // Function to handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  function handleDateChange(date) {
+    setSelectedDate(date);
+  }
 
-  // Function to handle form submission
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Perform logic to submit appointment data (e.g., send to API)
-    console.log('Appointment scheduled:', formData);
-    // Reset the form fields after submission
-    setFormData({
-      date: '',
-      time: '',
-      doctor: '',
-    });
-  };
+  function handleTimeChange(time) {
+    setSelectedTime(time);
+  }
+
+  function handleDoctorChange(doctor) {
+    setSelectedDoctor(doctor);
+  }
+
+  function handleBooking() {
+    // Implement the logic for booking the appointment
+    console.log(`Appointment booked for ${selectedDate} at ${selectedTime} with Dr. ${selectedDoctor}`);
+    // Additional logic for making an API call or other actions can be added here
+  }
 
   return (
-    <div className="container">
-      <h2>Schedule Appointment</h2>
-      <p>Empower your health journey by scheduling a new appointment. Choose the perfect date, time, and healthcare professional below:</p>
-      <br>  </br>
-      <form onSubmit={handleFormSubmit}>
-        <label>
-          Date:
-          <input type="date" name="date" value={formData.date} onChange={handleInputChange} required />
-        </label>
-<br>  </br>
-        <label>
-          Time:
-          <input type="time" name="time" value={formData.time} onChange={handleInputChange} required />
-        </label>
-        <br>  </br>
-        <label>
-          Doctor:
-          <input type="text" name="doctor" value={formData.doctor} onChange={handleInputChange} required />
-        </label>
-        <br>  </br>
-        {/* Add more form fields as needed (e.g., reason for appointment) */}
+    <div>
+      <PatientHeader />
+      <div>
+        <h2>Book an Appointment</h2>
 
-        <button type="submit">Schedule Appointment</button>
-      </form>
+        <div style={{ marginBottom: '20px' }}>
+          <label>Select Date:</label>
+          <input type="date" value={selectedDate} onChange={(e) => handleDateChange(e.target.value)} />
+        </div>
+
+        <div style={{ marginBottom: '20px' }}>
+          <label>Select Time:</label>
+          <input type="time" value={selectedTime} onChange={(e) => handleTimeChange(e.target.value)} />
+        </div>
+
+        <div style={{ marginBottom: '20px' }}>
+          <label>Select Doctor:</label>
+          <input type="text" value={selectedDoctor} onChange={(e) => handleDoctorChange(e.target.value)} />
+        </div>
+
+        <div>
+          <button onClick={handleBooking}>Book Appointment</button>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default ScheduleAppointment;
+export default AppointmentBooking;

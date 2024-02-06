@@ -1,8 +1,8 @@
-// Settings.js
+// DoctorSettings.js
 import React, { useState } from 'react';
-import PatientHeader from './patientheader';
+import DoctorHeader from './doctorheader';
 
-function Settings() {
+function DoctorSettings() {
   const [changePassword, setChangePassword] = useState(false);
   const [notificationPreferences, setNotificationPreferences] = useState({
     email: true,
@@ -32,15 +32,14 @@ function Settings() {
 
   const saveChanges = () => {
     // Implement logic to save changes to the backend
-    console.log('Changes saved:', { changePassword, notificationPreferences, language, theme });
+    console.log('Changes saved:', { changePassword, notificationPreferences});
   };
 
   return (
     <div>
-      <PatientHeader />
-      <div>
+      <DoctorHeader />
         <h2>Account Settings</h2>
-
+       
         <section>
           <h3>Change Password</h3>
           <label>
@@ -63,13 +62,11 @@ function Settings() {
             Receive email notifications
           </label>
         </section>
-
-       
-
+        
         <button onClick={saveChanges}>Save Changes</button>
-      </div>
-    </div>
+
+</div>
   );
 }
 
-export default Settings;
+export default DoctorSettings;

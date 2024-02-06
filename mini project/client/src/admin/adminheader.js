@@ -17,6 +17,9 @@ function Header({ onLogout }) {
       <nav className="quick-links">
         <ul>
           <li>
+        <Link to="/admin">Dashboard</Link>
+        </li>
+          <li>
             <Link to="/admin/users">View User List</Link>
           </li>
           <li>
