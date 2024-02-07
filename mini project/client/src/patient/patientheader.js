@@ -1,5 +1,6 @@
 // PatientHeader.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function PatientHeader() {
   const logoUrl = process.env.PUBLIC_URL + '/path/to/your/logo.png';
@@ -15,14 +16,14 @@ function PatientHeader() {
         <h3>Hi, User</h3>
       </div>
       <nav>
-        <ul>
-          <li><a href="/patient">Dashboard</a></li>
-          <li><a href="/patient/appointment-booking">Book Appointment</a></li>
-          <li><a href="/patient/profile">Profile</a></li>
-          <li><a href="/patient/view-appointments">View Appointments</a></li>
-          <li><a href="/patient/medical-history">Medical History</a></li>
-          <li><a href="/patient/settings">Settings</a></li>
-        </ul>
+      <ul>
+      <li><Link to="/patient">Dashboard</Link></li>
+      <li><Link to="/patient/appointment-booking">Book Appointment</Link></li>
+      <li><Link to="/patient/profile">Profile</Link></li>
+      <li><Link to="/patient/view-appointments">View Appointments</Link></li>
+      <li><Link to="/patient/medical-history">Medical History</Link></li>
+      <li><Link to="/patient/settings">Settings</Link></li>
+    </ul>
         <button onClick={handleLogout}>Logout</button>
       </nav>
     </header>
