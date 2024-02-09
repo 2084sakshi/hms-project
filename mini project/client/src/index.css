@@ -1,4 +1,4 @@
-body{
+/*body{
     margin:0;
 }
 .ant-btn-primary{
@@ -31,7 +31,6 @@ body{
     --button-color:#2273c0;
     --secodnary-color: #081a7e;
 }
-/*register.css*/
 .authentication{
     height: 100vh;
     display: flex;
@@ -101,3 +100,4 @@ label{
     
     text-decoration: underline;
 }
+*/

@@ -1,6 +1,7 @@
 // Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './../css/admin.css'
 
 function Header({ onLogout }) {
   // Assuming you have a logo image in the public folder
@@ -9,7 +10,7 @@ function Header({ onLogout }) {
     console.log('Logout logic goes here');
   };
   return (
-    <header>
+    <header className='admin-header'>
       <div className="logo-container inline-block">
         <img src={logoUrl} alt="Logo" />
         <h5>Medconnect360</h5>

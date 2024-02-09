@@ -1,6 +1,7 @@
 // Profile.js
 import React, { useState } from 'react';
 import PatientHeader from './patientheader';
+import './../css/patient.css';
 
 function Profile() {
   const [editMode, setEditMode] = useState(false);

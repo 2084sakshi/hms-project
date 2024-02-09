@@ -1,4 +1,20 @@
 const express = require('express');
+const patientController = require('../controller/patientcontroller');
+const { authenticateUser } = require('../middleware/authMiddleware');
+
+const router = express.Router();
+
+// Define routes for patient functionalities
+router.get('/appointments', authenticateUser, patientController.viewAppointments);
+router.post('/appointments/book', authenticateUser, patientController.bookAppointment);
+router.get('/medical-history', authenticateUser, patientController.viewMedicalHistory);
+router.put('/profile', authenticateUser, patientController.changeProfile);
+router.put('/settings/notification', authenticateUser, patientController.notificationSettings);
+router.put('/settings/password', authenticateUser, patientController.changePassword);
+
+module.exports = router;
+
+/*const express = require('express');
 const router = express.Router();
 const user = require('../models/usermodel');
 const bcrypt = require('bcryptjs');
@@ -56,3 +72,4 @@ router.post('/login', async(req, res) => {
     res.send('Login');
 }); 
 module.exports = router;
+*/

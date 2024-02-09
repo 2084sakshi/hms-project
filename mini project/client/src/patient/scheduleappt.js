@@ -1,7 +1,7 @@
 // AppointmentBooking.js
 import React, { useState } from 'react';
 import PatientHeader from './patientheader';
-
+import './../css/patient.css';
 function AppointmentBooking() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState('');

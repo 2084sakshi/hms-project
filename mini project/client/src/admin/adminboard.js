@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './adminheader';
+import './../css/admin.css'
 
 function AdminDashboard() {
   // Simulated data
@@ -9,11 +10,11 @@ function AdminDashboard() {
 
   return (
     <div>
-      <header>
+      <header id = "#home">
         <Header onLogout={() => {}} />
       </header>
       <h1>Welcome to the Admin Dashboard</h1>
-      <section>
+      <section id = "#about">
         <h2>Summary:</h2>
         <p>
           Explore and manage user, doctor, and application data in the admin panel. Here's a quick overview of the current statistics:
@@ -24,6 +25,7 @@ function AdminDashboard() {
           <li>Pending Applications: {applicationCount}</li>
         </ul>
       </section>
+     
     </div>
   );
 }

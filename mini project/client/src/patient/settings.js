@@ -1,7 +1,7 @@
 // Settings.js
 import React, { useState } from 'react';
 import PatientHeader from './patientheader';
-
+import './../css/patient.css';
 function Settings() {
   const [changePassword, setChangePassword] = useState(false);
   const [notificationPreferences, setNotificationPreferences] = useState({

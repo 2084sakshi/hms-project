@@ -1,9 +1,7 @@
 // PatientHeader.js
 import React from 'react';
-import './../css/patient.css'
-import { useAuth0 } from "@auth0/auth0-react";
-  
-
+import { Link } from 'react-router-dom';
+import './../css/patient.css';
 function PatientHeader() {
   const logoUrl = 'mini project\client\src\css\logo.png';
 
@@ -14,20 +12,26 @@ function PatientHeader() {
 
   return (
     <header>
-      <nav className='patient-navbar'>
-      <img src={logoUrl} alt="Medconnect360" />
-        <ul className='patient-header'>
-          <li className='nav-links'><a href="/patient">Dashboard</a></li>
-          <li className='nav-links'><a href="/patient/appointment-booking">Book Appointment</a></li>
-          <li className='nav-links'><a href="/patient/profile">Profile</a></li>
-          <li className='nav-links'><a href="/patient/view-appointments">View Appointments</a></li>
-          <li className='nav-links'><a href="/patient/medical-history">Medical History</a></li>
-          <li className='nav-links'><a href="/patient/settings">Settings</a></li>
-        </ul>
+        <nav  className='patient-navbar'>
+      
+        <img src={logoUrl} alt="Medconnect360" />
+       
+    
+    
+      <ul className='patient-header'>
+      <li  className='nav-links'><Link to="/patient">Dashboard</Link></li>
+      <li  className='nav-links'><Link to="/patient/appointment-booking">Book Appointment</Link></li>
+       
+      <li className='nav-links'><Link to="/patient/view-appointments">View Appointments</Link></li>
+      
+      <li className='nav-links'><Link to="/patient/medical-history">Medical History</Link></li>
+      <li className='nav-links' ><Link to="/patient/profile">Profile</Link></li>
+      <li className='nav-links' ><Link to="/patient/settings">Settings</Link></li>
+    </ul>
         <button onClick={handleLogout}>Logout</button>
       </nav>
       <div>
-        <h3>Hi, User</h3>
+      <h5>Hi, User</h5>
       </div>
     </header>
   );

@@ -1,7 +1,7 @@
 // ViewAppointment.js
 import React from 'react';
 import PatientHeader from './patientheader';
-
+import './../css/patient.css';
 function ViewAppointment() {
   // Mock data for demonstration purposes
   const appointments = [

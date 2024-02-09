@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './adminheader';
-
+import './../css/admin.css'
 function UserList() {
   // Simulated data
   const [users, setUsers] = useState([]);

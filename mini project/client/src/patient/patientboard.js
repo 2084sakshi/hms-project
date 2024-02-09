@@ -2,7 +2,6 @@
 import React from 'react';
 import PatientHeader from './patientheader';
 import './../css/patient.css';
-
 function PatientDashboard() {
   return (
     <div>
