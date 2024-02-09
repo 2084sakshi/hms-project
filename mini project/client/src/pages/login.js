@@ -4,6 +4,7 @@ import React from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import './../css/admin.css'
 
 const { Option } = Select;
 

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
+import './../css/admin.css'
+
 const { Option } = Select;
 
 function Register() {
