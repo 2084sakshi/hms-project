@@ -1,18 +1,20 @@
 // PatientDashboard.js
 import React from 'react';
 import PatientHeader from './patientheader';
+import './../css/patient.css';
 
 function PatientDashboard() {
   return (
     <div>
       <PatientHeader />
-      <div>
-        <h2>Welcome to Your Dashboard</h2>
+      <div className='patientheader'>
+        <h2>Welcome to Your Dashboard!</h2>
         <p>
           Thank you for choosing Medconnect360 for your healthcare needs. This dashboard provides you with
           quick access to essential features. Here's what you can do:
         </p>
-        <ul>
+        <ul className='dash-links'>
+          <img src='' alt=''/>
           <li><strong>Book Appointment:</strong> Schedule your medical appointments with ease.</li>
           <li><strong>View Appointments:</strong> Check your upcoming and past appointments.</li>
           <li><strong>Medical History:</strong> Review your medical history and diagnoses.</li>
