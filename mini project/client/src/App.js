@@ -2,8 +2,11 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-import Login from './pages/login';
-import Register from './pages/register';
+
+import LoginPatient from './pages/loginpatient';
+import LoginDoctor from './pages/logindoctor';
+import RegisterPatient from './pages/registerpatient';
+import RegisterDoctor from './pages/registerdoctor';
 import Home from './pages/home';
 
 import AdminDashboard from './admin/adminboard';
@@ -34,8 +37,10 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+      <Route path="/login-patient" element={<LoginPatient />} />
+      <Route path="/login-doctor" element={<LoginDoctor />} />
+      <Route path="/register-patient" element={<RegisterPatient />} />
+      <Route path="/register-doctor" element={<RegisterDoctor />} />
         <Route path="/" element={<Home />} />
 
         <Route path="/admin/users" element={<UserList />} />

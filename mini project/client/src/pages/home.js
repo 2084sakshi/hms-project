@@ -54,8 +54,8 @@ function Home() {
                 Doctor
               {showLoginRegister === 'doctor' && (
                 <div className="dropdown">
-                  <Link to="/login">Login</Link>
-                  <Link to="/register">Register</Link>
+                  <Link to="/login-doctor">Login</Link>
+                  <Link to="/register-doctor">Register</Link>
                 </div>
               )}
               </div>
@@ -69,8 +69,8 @@ function Home() {
                 Patient
               {showLoginRegister === 'patient' && (
                 <div className="dropdown">
-                  <Link to="/login">Login</Link>
-                  <Link to="/register">Register</Link>
+                  <Link to="/login-patient">Login</Link>
+                  <Link to="/register-patient">Register</Link>
                 </div>
               )}
               </div>
@@ -117,7 +117,8 @@ function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <section id = "about">
+             <section className="features-section">
         <div className="feature">
           <h3>For Doctors</h3>
           <ul>
@@ -143,7 +144,8 @@ function Home() {
           </ul>
         </div>
       </section>
-      <section id="#contact" class = "contact">
+      </section>
+      <section id="contact" class = "contact">
         <div class = "title"  data-aos="fade-down" >
             <h2>Contact <span>Me</span></h2>
         </div>
