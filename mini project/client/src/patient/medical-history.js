@@ -25,7 +25,7 @@ function MedicalHistory() {
       <div>
         <h2>Your Medical History</h2>
 
-        <section>
+        <section className='medical-hist'>
           <h3>Diagnoses</h3>
           <ul>
             {medicalHistoryData.diagnoses.map((diagnosis, index) => (
@@ -36,7 +36,7 @@ function MedicalHistory() {
           </ul>
         </section>
 
-        <section>
+        <section className='medical-hist'>
           <h3>Treatments</h3>
           <ul>
             {medicalHistoryData.treatments.map((treatment, index) => (
@@ -47,7 +47,7 @@ function MedicalHistory() {
           </ul>
         </section>
 
-        <section>
+        <section  >
           <h3>Medications</h3>
           <ul>
             {medicalHistoryData.medications.map((medication, index) => (
