@@ -1,0 +1,71 @@
+/* DoctorDashboard.css */
+
+.doctor-dashboard-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .doctor-dashboard-container header {
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+  
+  .doctor-dashboard-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .doctor-dashboard-container p {
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .overview-stats ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .overview-stats ul li {
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-overview {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dashboard-overview h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-overview ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dashboard-overview ul li {
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-overview p {
+    margin-top: 20px;
+  }
+  

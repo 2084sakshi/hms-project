@@ -1,0 +1,32 @@
+/* Flashcard.css */
+.flashcard {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-position: center; /* Positions the background image in the center */
+    color: white; /* Sets the text color to white for better readability */
+  }
+  
+  .flashcard h2 {
+    margin-bottom: 10px;
+  }
+  
+  .flashcard p {
+    margin-bottom: 0;
+  }
+  
+  .flashcard p.collapsed {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3.5em; /* Adjust as needed */
+  }
+  
+  .flashcard p.expanded {
+    overflow: visible;
+  }
+  
+  .expand-icon {
+    cursor: pointer;
+  }
+  

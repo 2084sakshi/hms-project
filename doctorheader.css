@@ -1,0 +1,55 @@
+/* doctorheader.css */
+
+.doctor-header {
+    background-color: #f0f8ff; /* Set background color */
+    padding: 20px;
+    border-bottom: 2px solid #ddd; /* Add a border */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 40px; /* Adjust logo size */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin-right: 20px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #0000ff; /* Set text color to blue */
+    font-weight: bold; /* Make text bold */
+  }
+  
+  .logout-button {
+    background-color: #ff0000; /* Set background color for logout button */
+    color: #ffffff; /* Set text color for logout button */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #cc0000; /* Change background color on hover */
+  }
+  
