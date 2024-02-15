@@ -1,6 +1,7 @@
 // Profile.js
 import React, { useState } from 'react';
 import PatientHeader from './patientheader';
+import './../css/patient.css'
 
 function Profile() {
   const [editMode, setEditMode] = useState(false);
@@ -32,33 +33,34 @@ function Profile() {
   };
 
   return (
-    <div>
+    <div >
       <PatientHeader />
-      <div>
+      <div className='patient-main'>
         <h2>Your Profile</h2>
-
+        <div className='card1'>
         {editMode ? (
           <div>
             {/* Include fields for editing profile information */}
-            <div>
+    
+            <div className='label'>
               <label>First Name: <input type="text" value={profileData.firstName} onChange={(e) => handleInputChange('firstName', e.target.value)} /></label>
             </div>
-            <div>
+            <div className='label'>
               <label>Last Name: <input type="text" value={profileData.lastName} onChange={(e) => handleInputChange('lastName', e.target.value)} /></label>
             </div>
-            <div>
+            <div className='label'>
               <label>Gender: <input type="text" value={profileData.gender} onChange={(e) => handleInputChange('gender', e.target.value)} /></label>
             </div>
-            <div>
+            <div className='label'>
               <label>Date of Birth: <input type="date" value={profileData.dateOfBirth} onChange={(e) => handleInputChange('dateOfBirth', e.target.value)} /></label>
             </div>
-            <div>
+            <div className='label'>
               <label>Contact Number: <input type="tel" value={profileData.contactNumber} onChange={(e) => handleInputChange('contactNumber', e.target.value)} /></label>
             </div>
-            <div>
+            <div className='label'>
               <label>Email: <input type="email" value={profileData.email} onChange={(e) => handleInputChange('email', e.target.value)} /></label>
             </div>
-            <div>
+            <div className='label'>
               <label>Address: <textarea value={profileData.address} onChange={(e) => handleInputChange('address', e.target.value)} /></label>
             </div>
           </div>
@@ -92,6 +94,7 @@ function Profile() {
         <button onClick={editMode ? saveChanges : handleToggleEditMode}>
           {editMode ? 'Save Changes' : 'Edit Profile'}
         </button>
+        </div>
       </div>
     </div>
   );
