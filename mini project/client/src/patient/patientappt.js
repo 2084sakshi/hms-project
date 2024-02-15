@@ -13,7 +13,7 @@ function ViewAppointment() {
   return (
     <div>
       <PatientHeader />
-      <div>
+      <div className='patient-main'>
         <h2>Your Appointments</h2>
         <table>
           <thead>
