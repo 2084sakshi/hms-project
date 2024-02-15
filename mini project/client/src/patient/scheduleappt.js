@@ -28,10 +28,10 @@ function AppointmentBooking() {
   return (
     <div>
       <PatientHeader />
-      <div>
-        <h2>Book an Appointment</h2>
-
-        <div style={{ marginBottom: '20px' }}>
+      <div className='schedule-appt'>
+        <h2 className='appt'>Book an Appointment</h2>
+        <div className='card'>
+        <div style={{ marginBottom: '20px',}}>
           <label>Select Date:</label>
           <input type="date" value={selectedDate} onChange={(e) => handleDateChange(e.target.value)} />
         </div>
@@ -46,11 +46,13 @@ function AppointmentBooking() {
           <input type="text" value={selectedDoctor} onChange={(e) => handleDoctorChange(e.target.value)} />
         </div>
 
-        <div>
+        <div className='appt-b'> 
           <button onClick={handleBooking}>Book Appointment</button>
+        </div>
         </div>
       </div>
     </div>
+
   );
 }
 
