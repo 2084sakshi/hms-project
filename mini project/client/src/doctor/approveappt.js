@@ -61,7 +61,7 @@ function DoctorApproveAppointment() {
       <DoctorHeader />
       <div>
         <h2>Approve Appointments</h2>
-        <table >
+        <table>
           <thead>
             <tr>
               <th>Patient</th>
@@ -72,19 +72,19 @@ function DoctorApproveAppointment() {
           </thead>
           <tbody>
             {appointments.map((appointment) => (
-              <tr key={appointment.id}>
+              <tr key={appointment.id} className={selectedAppointment === appointment ? 'selected' : ''}>
                 <td>{appointment.patientName}</td>
                 <td>{appointment.date}</td>
                 <td>{appointment.time}</td>
                 <td>
-                  <button onClick={() => handleSelectAppointment(appointment)}>Approve</button>
+                  <button onClick={() => handleSelectAppointment(appointment)}>Select</button>
+                  <button onClick={() => handleApproveAppointment(appointment)}>Approve</button>
                   <button onClick={handleRejectAppointment}>Reject</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        
       </div>
     </div>
   );

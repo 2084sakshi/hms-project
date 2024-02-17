@@ -1,13 +1,22 @@
 // PatientHeader.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './../css/patient.css';
-function PatientHeader() {
+function PatientHeader({ onLogout}) {
   const logoUrl = 'mini project\client\src\css\logo.png';
 
+  
+    const navigate = useNavigate();
   const handleLogout = () => {
-    const { loginWithRedirect } = useAuth0();
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  
+    console.log('Logout logic goes here');
+    if (onLogout) {
+      onLogout();
+    }
+
+    // Navigate to the home page ("/")
+    navigate("/");
   };
 
   return (

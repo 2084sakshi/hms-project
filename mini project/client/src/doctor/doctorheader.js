@@ -1,10 +1,19 @@
 // DoctorHeader.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function DoctorHeader() {
+function DoctorHeader({ onLogout}) {
+  const navigate = useNavigate();
   const handleLogout = () => {
+  
     console.log('Logout logic goes here');
+    if (onLogout) {
+      onLogout();
+    }
+
+    // Navigate to the home page ("/")
+    navigate("/");
   };
   return (
     <header>

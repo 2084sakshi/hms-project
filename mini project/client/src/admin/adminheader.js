@@ -1,14 +1,22 @@
-// Header.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './../css/admin.css'
+import { Link, useNavigate } from 'react-router-dom';
+import './../css/admin.css';
 
 function Header({ onLogout }) {
-  // Assuming you have a logo image in the public folder
   const logoUrl = process.env.PUBLIC_URL + '/path/to/your/logo.png';
+  const navigate = useNavigate();
+
   const handleLogout = () => {
+    // Perform any logout logic
     console.log('Logout logic goes here');
+    if (onLogout) {
+      onLogout();
+    }
+
+    // Navigate to the home page ("/")
+    navigate("/");
   };
+
   return (
     <header className='admin-header'>
       <div className="logo-container inline-block">
@@ -18,8 +26,8 @@ function Header({ onLogout }) {
       <nav className="quick-links">
         <ul>
           <li>
-        <Link to="/admin">Dashboard</Link>
-        </li>
+            <Link to="/admin">Dashboard</Link>
+          </li>
           <li>
             <Link to="/admin/users">View User List</Link>
           </li>
@@ -33,7 +41,7 @@ function Header({ onLogout }) {
             <Link to="/admin/approve-doctors">Approve Doctors</Link>
           </li>
         </ul>
-        <button onClick={onLogout}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </nav>
     </header>
   );

@@ -13,6 +13,7 @@ function Settings() {
 
   const handleToggleChangePassword = () => {
     setChangePassword(!changePassword);
+    console.log('Change password:', changePassword);
   };
 
   const handleToggleNotification = () => {
