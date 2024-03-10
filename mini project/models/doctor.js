@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const doctorSchema = new mongoose.Schema({
-  id: { type: mongoose.Schema.Types.ObjectId, auto: true }, // Primary Key
+  /*id: { type: mongoose.Schema.Types.ObjectId, auto: true }, // Primary Key
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, unique: true }, // Foreign Key to User model
   name: { type: String, required: true, trim: true },
-  email: { type: String, required: true, unique: true, trim: true , match: [/\S+@\S+\.\S+/, 'is invalid'] },
+  email: { type: String, required: true, unique: true, trim: true , match: [/\S+@\S+\.\S+/, 'is invalid'] },*/
   phoneNumber: { type: String, required: true, unique: true, trim: true },
   address: { type: String, required: true, trim: true },
   approved: { type: Boolean, default: false },
