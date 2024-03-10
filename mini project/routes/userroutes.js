@@ -1,16 +1,24 @@
 const express = require('express');
 const patientController = require('../controller/patientcontroller');
-const { authenticateUser } = require('../middleware/authMiddleware');
+//const { authenticateUser } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
 // Define routes for patient functionalities
-router.get('/appointments', authenticateUser, patientController.viewAppointments);
-router.post('/appointments/book', authenticateUser, patientController.bookAppointment);
-router.get('/medical-history', authenticateUser, patientController.viewMedicalHistory);
-router.put('/profile', authenticateUser, patientController.changeProfile);
-router.put('/settings/notification', authenticateUser, patientController.notificationSettings);
-router.put('/settings/password', authenticateUser, patientController.changePassword);
+// router.get('/appointments', authenticateUser, patientController.viewAppointments);
+// router.post('/appointments/book', authenticateUser, patientController.bookAppointment);
+// router.get('/medical-history', authenticateUser, patientController.viewMedicalHistory);
+// router.put('/profile', authenticateUser, patientController.changeProfile);
+// router.put('/settings/notification', authenticateUser, patientController.notificationSettings);
+// router.put('/settings/password', authenticateUser, patientController.changePassword);
+
+router.get('/appointments', patientController.viewAppointments);
+ router.post('/book-appointment', patientController.bookAppointment);
+ router.get('/medical-history', patientController.viewMedicalHistory);
+ router.get('/profile', patientController.viewProfile);
+ router.put('/updateprofile', patientController.changeProfile);
+ router.put('/settings/notification', patientController.notificationSettings);
+router.put('/settings/password', patientController.changePassword);
 
 module.exports = router;
 
