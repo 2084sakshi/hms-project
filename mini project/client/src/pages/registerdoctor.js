@@ -13,7 +13,7 @@ function RegisterDoctor() {
   const onFinish = async (values) => {
     try {
       // Your registration logic for doctors goes here
-
+      
       // Redirect to doctor dashboard on successful registration
       navigate("/doctor");
     } catch (err) {

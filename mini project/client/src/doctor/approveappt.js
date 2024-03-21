@@ -38,20 +38,16 @@ function DoctorApproveAppointment() {
     fetchAppointments();
   }, []);
 
-  const handleSelectAppointment = (appointment) => {
-    setSelectedAppointment(appointment);
-  };
-
-  const handleApproveAppointment = () => {
+  const handleApproveAppointment = (appointment) => {
     // Logic to approve appointment (to be implemented)
-    console.log('Appointment approved:', selectedAppointment);
+    console.log('Appointment approved:', appointment);
     // You may want to update the appointment status and re-fetch appointments from the backend
     setSelectedAppointment(null);
   };
 
-  const handleRejectAppointment = () => {
+  const handleRejectAppointment = (appointment) => {
     // Logic to reject appointment (to be implemented)
-    console.log('Appointment rejected:', selectedAppointment);
+    console.log('Appointment rejected:', appointment);
     // You may want to update the appointment status and re-fetch appointments from the backend
     setSelectedAppointment(null);
   };
@@ -77,9 +73,8 @@ function DoctorApproveAppointment() {
                 <td>{appointment.date}</td>
                 <td>{appointment.time}</td>
                 <td>
-                  <button onClick={() => handleSelectAppointment(appointment)}>Select</button>
                   <button onClick={() => handleApproveAppointment(appointment)}>Approve</button>
-                  <button onClick={handleRejectAppointment}>Reject</button>
+                  <button onClick={() => handleRejectAppointment(appointment)}>Reject</button>
                 </td>
               </tr>
             ))}

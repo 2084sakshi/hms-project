@@ -53,7 +53,9 @@ router.put('/appointmentapprove/:appointmentId', doctorController.approveAppoint
 router.put('/appointmentcancel/:appointmentId', doctorController.rejectAppointment);
 router.get('/upcomingappointments', doctorController.viewUpcomingAppointments);
 router.get('/pastappointments', doctorController.viewPastAppointments);
-router.put('/settings/notification', doctorController.notificationSettings);
-router.put('/settings/password', doctorController.changePassword);
+router.put('/setnotification', doctorController.notificationSettings);
+router.put('/changepassword:', doctorController.changePassword);
+
+
 
 module.exports = router;

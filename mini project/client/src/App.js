@@ -27,6 +27,7 @@ import DoctorApproveAppointment from './doctor/approveappt';
 import DoctorScheduledAppointments from './doctor/viewappointment';
 import DoctorProfile from './doctor/profile';
 import DoctorSettings from './doctor/setting';
+import DoctorNotification from './doctor/doctornotification';
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/admin/appointments" element={<Appointments />} />
         <Route path="/admin/approve-doctors" element={<ApproveDoctors />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/doctor/doctor-notification" element={<DoctorNotification />} />
 
         {/* Add routes for patient-specific components */}
         <Route path="/patient" element={<PatientDashboard />} />

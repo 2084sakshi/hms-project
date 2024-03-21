@@ -1,7 +1,8 @@
-// Settings.js
 import React, { useState } from 'react';
+import { Toaster } from 'react-hot-toast'; 
+import { toast } from 'react-hot-toast';// Import Toaster from react-hot-toast
 import PatientHeader from './patientheader';
-import './../css/patient.css';
+
 function Settings() {
   const [changePassword, setChangePassword] = useState(false);
   const [notificationPreferences, setNotificationPreferences] = useState({
@@ -10,65 +11,62 @@ function Settings() {
   });
   const [language, setLanguage] = useState('en');
   const [theme, setTheme] = useState('light');
+  
+const notify = (message) => {
+  toast.success(message); // Display a success toast message
+};
 
   const handleToggleChangePassword = () => {
     setChangePassword(!changePassword);
-    console.log('Change password:', changePassword);
+    
   };
 
   const handleToggleNotification = () => {
     setNotificationPreferences((prevPreferences) => ({
-      ...prevPreferences,
+     /* ...prevPreferences,*/
       email: !prevPreferences.email,
     }));
+    
   };
 
-  const handleLanguageChange = (selectedLanguage) => {
-    setLanguage(selectedLanguage);
-  };
-
-  const handleThemeChange = (selectedTheme) => {
-    setTheme(selectedTheme);
-  };
 
   const saveChanges = () => {
     // Implement logic to save changes to the backend
-    console.log('Changes saved:', { changePassword, notificationPreferences, language, theme });
+    console.log('Changes saved:', { changePassword, notificationPreferences });
+    notify('Changes saved successfully');
   };
 
   return (
     <div>
       <PatientHeader />
-      <div>
-        <h2>Account Settings</h2>
+      <h2>Account Settings</h2>
+      {/* Add Toaster component */}
+      <Toaster position="top-right" reverseOrder={false} />
 
-        <section>
-          <h3>Change Password</h3>
-          <label>
-            <input type="checkbox" checked={changePassword} onChange={handleToggleChangePassword} />
-            Enable password change
-          </label>
-          {changePassword && (
-            <div>
-              {/* Include fields for entering current password and new password */}
-              <label>Current Password: <input type="password" /></label>
-              <label>New Password: <input type="password" /></label>
-            </div>
-          )}
-        </section>
+      <section>
+        <h3>Change Password</h3>
+        <label>
+          <input type="checkbox" checked={changePassword} onChange={handleToggleChangePassword} />
+          Enable password change
+        </label>
+        {changePassword && (
+          <div>
+            {/* Include fields for entering current password and new password */}
+            <label>Current Password: <input type="password" /></label>
+            <label>New Password: <input type="password" /></label>
+          </div>
+        )}
+      </section>
 
-        <section>
-          <h3>Notification Preferences</h3>
-          <label>
-            <input type="checkbox" checked={notificationPreferences.email} onChange={handleToggleNotification} />
-            Receive email notifications
-          </label>
-        </section>
+      <section>
+        <h3>Notification Preferences</h3>
+        <label>
+          <input type="checkbox" checked={notificationPreferences.email} onChange={handleToggleNotification} />
+          Receive email notifications
+        </label>
+      </section>
 
-       
-
-        <button onClick={saveChanges}>Save Changes</button>
-      </div>
+      <button onClick={saveChanges}>Save Changes</button>
     </div>
   );
 }

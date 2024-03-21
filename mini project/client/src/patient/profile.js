@@ -6,14 +6,15 @@ import './../css/patient.css';
 function Profile() {
   const [editMode, setEditMode] = useState(false);
   const [profileData, setProfileData] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    gender: 'Male',
-    dateOfBirth: '1990-01-01',
-    contactNumber: '123-456-7890',
-    email: 'john.doe@example.com',
-    address: '123 Main Street, Cityville',
+    firstName: 'Ira',
+    lastName: 'Sharma',
+    gender: 'Female',
+    dateOfBirth: '1989-07-15', // Adjusted date of birth as per the given age
+    contactNumber: '4475943244',
+    email: '2022.ira.sharma@ves.ac.in',
+    address: 'Sunshine Colony,Kurla West', // Provide the actual address if available
   });
+  
 
   const handleToggleEditMode = () => {
     setEditMode(!editMode);

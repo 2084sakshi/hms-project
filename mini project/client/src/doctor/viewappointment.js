@@ -5,21 +5,21 @@ import DoctorHeader from './doctorheader';
 const dummyAppointments = [
   {
     id: 1,
-    patientName: 'John Doe',
+    patientName: 'Rahul Kumar',
     date: '2024-02-10',
     time: '10:00 AM',
     status: 'Upcoming',
   },
   {
     id: 2,
-    patientName: 'Jane Smith',
+    patientName: 'Priya Sharma',
     date: '2024-02-12',
     time: '2:30 PM',
     status: 'Upcoming',
   },
   {
     id: 3,
-    patientName: 'Bob Johnson',
+    patientName: 'Amit Patel',
     date: '2024-01-15',
     time: '3:45 PM',
     status: 'Completed',
@@ -27,47 +27,48 @@ const dummyAppointments = [
   // Add more dummy data as needed
   {
     id: 4,
-    patientName: 'Alice Brown',
+    patientName: 'Anjali Gupta',
     date: '2024-02-15',
     time: '9:30 AM',
     status: 'Upcoming',
   },
   {
     id: 5,
-    patientName: 'Michael Davis',
+    patientName: 'Manish Joshi',
     date: '2024-02-18',
     time: '4:00 PM',
     status: 'Upcoming',
   },
   {
     id: 6,
-    patientName: 'Sarah Johnson',
+    patientName: 'Sneha Singh',
     date: '2024-02-20',
     time: '11:30 AM',
     status: 'Completed',
   },
   {
     id: 7,
-    patientName: 'David Wilson',
+    patientName: 'Rajesh Kumar',
     date: '2024-02-22',
     time: '3:00 PM',
     status: 'Completed',
   },
   {
     id: 8,
-    patientName: 'Emily Thompson',
+    patientName: 'Deepika Mishra',
     date: '2024-02-25',
     time: '9:00 AM',
     status: 'Completed',
   },
   {
     id: 9,
-    patientName: 'Daniel Harris',
+    patientName: 'Vivek Tiwari',
     date: '2024-02-28',
     time: '1:30 PM',
     status: 'Completed',
   },
 ];
+
 
 function DoctorViewAppointments() {
   const today = new Date().toLocaleDateString();

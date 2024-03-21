@@ -5,16 +5,16 @@ import DoctorHeader from './doctorheader';
 function DoctorProfile() {
   const [editMode, setEditMode] = useState(false);
   const [profileData, setProfileData] = useState({
-    fullName: 'Dr. John Doe',
-    gender: 'Male',
-    dateOfBirth: '1980-01-01',
-    contactNumber: '123-456-7890',
-    email: 'john.doe@example.com',
-    specialty: 'General Medicine',
-    clinicAddress: '123 Medical Street, Cityville',
-    availability: 'Monday to Friday, 9:00 AM to 5:00 PM',
-    bio: 'Experienced doctor specializing in general medicine. Dedicated to providing quality healthcare.',
-  });
+    fullName: 'Dr. Ananya Dubey',
+    gender: 'Female',
+    age: '25 years', // Assuming this is derived from age
+    contactNumber: '9876543219',
+    email: 'anaya@gmail.com',
+    specialty: 'Pediatrics',
+    clinicAddress: '456 Oak St, City',
+    availability: '10:00 AM - 6:00 PM',
+    bio: 'Experienced pediatrician with 8 years of practice. Committed to providing compassionate care to children.',
+});
 
   const handleToggleEditMode = () => {
     setEditMode(!editMode);
@@ -49,7 +49,7 @@ function DoctorProfile() {
               <label>Gender: <input type="text" value={profileData.gender} onChange={(e) => handleInputChange('gender', e.target.value)} /></label>
             </div>
             <div>
-              <label>Date of Birth: <input type="date" value={profileData.dateOfBirth} onChange={(e) => handleInputChange('dateOfBirth', e.target.value)} /></label>
+              <label>Age: <input type="text" value={profileData.Age} onChange={(e) => handleInputChange('age', e.target.value)} /></label>
             </div>
             <div>
               <label>Contact Number: <input type="tel" value={profileData.contactNumber} onChange={(e) => handleInputChange('contactNumber', e.target.value)} /></label>
@@ -80,7 +80,7 @@ function DoctorProfile() {
               <strong>Gender:</strong> {profileData.gender}
             </p>
             <p>
-              <strong>Date of Birth:</strong> {profileData.dateOfBirth}
+              <strong>Age:</strong> {profileData.age}
             </p>
             <p>
               <strong>Contact Number:</strong> {profileData.contactNumber}

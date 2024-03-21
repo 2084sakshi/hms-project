@@ -13,10 +13,16 @@ function RegisterPatient() {
   const onFinish = async (values) => {
     try {
       // Your registration logic for patients goes here
-
-      // Redirect to patient dashboard on successful registration
-      navigate("/patient");
-    } catch (err) {
+      const response = await axios.post("http://localhost:5000/api/patient/register", values);
+      
+      if (response.data.success) {
+        navigate("/patient");
+      }
+      else {
+        toast.error("An error occurred while processing your request.",error.message);
+      // Redirect to patient dashboard on successful registration 
+    }
+   } catch (err) {
       // Handle errors
       toast.error("An error occurred while processing your request.");
     }

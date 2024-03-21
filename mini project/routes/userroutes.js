@@ -17,14 +17,10 @@ router.get('/appointments', patientController.viewAppointments);
  router.get('/medical-history', patientController.viewMedicalHistory);
  router.get('/profile', patientController.viewProfile);
  router.put('/updateprofile', patientController.changeProfile);
- router.put('/settings/notification', patientController.notificationSettings);
-router.put('/settings/password', patientController.changePassword);
+ router.put('/notification', patientController.notificationSettings);
+router.put('/changepasword', patientController.changePassword);
 
-module.exports = router;
-
-/*const express = require('express');
-const router = express.Router();
-const user = require('../models/usermodel');
+const user = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -80,4 +76,3 @@ router.post('/login', async(req, res) => {
     res.send('Login');
 }); 
 module.exports = router;
-*/

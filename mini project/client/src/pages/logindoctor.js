@@ -15,6 +15,7 @@ function LoginDoctor() {
       // Your login logic for doctors goes here
 
       // Redirect to doctor dashboard on successful login
+      console.log(values);
       navigate("/doctor");
     } catch (err) {
       // Handle errors

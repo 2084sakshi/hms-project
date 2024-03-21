@@ -39,6 +39,9 @@ function DoctorHeader({ onLogout}) {
           <li>
             <Link to="/doctor/settings">Settings</Link>
           </li>
+          <li>
+            <Link to="/doctor/doctor-notification">Notification</Link>
+          </li>
         </ul>
         <button onClick={handleLogout}>Logout</button>
       </nav>
