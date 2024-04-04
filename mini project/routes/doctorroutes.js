@@ -1,5 +1,5 @@
 const express = require('express');
-const doctorController = require('../controller/doctorController');
+const doctorController = require('../controller/doctorcontroller');
 const Doctor = require('../models/doctor');
 //const { authenticateUser } = require('../middleware/authMiddleware');
 
@@ -49,13 +49,60 @@ router.post('/', async (req, res) => {
 });
 router.get('/profile', doctorController.viewProfile);
 router.put('/updateprofile', doctorController.changeProfile);  
+router.get('/:id/appointments', doctorController.viewAppointments);
+
 router.put('/appointmentapprove/:appointmentId', doctorController.approveAppointment);
 router.put('/appointmentcancel/:appointmentId', doctorController.rejectAppointment);
-router.get('/upcomingappointments', doctorController.viewUpcomingAppointments);
+router.get('/appointments/pending', doctorController.viewUpcomingAppointments);
 router.get('/pastappointments', doctorController.viewPastAppointments);
 router.put('/setnotification', doctorController.notificationSettings);
 router.put('/changepassword:', doctorController.changePassword);
-
+/*
+// Route to mark an appointment as approved
+router.put('/appointmentapprove/:appointmentId', async (req, res) => {
+    try {
+      const appointment = await Appointment.findByIdAndUpdate(req.params.id, { status: 'Approved' });
+      res.json({ message: 'Appointment marked as approved' });
+    } catch (error) {
+      console.error('Error marking appointment as approved:', error);
+      res.status(500).json({ error: 'Failed to mark appointment as approved' });
+    }
+  });
+  
+  // Route to mark an appointment as rejected
+  router.put('/appointmentcancel/:appointmentId', async (req, res) => {
+    try {
+      const appointment = await Appointment.findByIdAndUpdate(req.params.id, { status: 'Rejected' });
+      res.json({ message: 'Appointment marked as rejected' });
+    } catch (error) {
+      console.error('Error marking appointment as rejected:', error);
+      res.status(500).json({ error: 'Failed to mark appointment as rejected' });
+    }
+  });
+  
+  // Route to mark an appointment as completed
+  router.put('/appointments/completed', async (req, res) => {
+      try {
+        const appointment = await Appointment.findByIdAndUpdate(req.params.id, { status: 'Completed' });
+        res.json({ message: 'Appointment marked as completed' });
+      } catch (error) {
+        console.error('Error marking appointment as completed:', error);
+        res.status(500).json({ error: 'Failed to mark appointment as completed' });
+      }
+    });
+    
+    // Route to mark an appointment as canceled
+    router.put('/appointments/pending', async (req, res) => {
+      try {
+        const appointment = await Appointment.findByIdAndUpdate(req.params.id, { status: 'pending' });
+        res.json({ message: 'Appointment marked as canceled' });
+      } catch (error) {
+        console.error('Error marking appointment as canceled:', error);
+        res.status(500).json({ error: 'Failed to mark appointment as canceled' });
+      }
+    });
+    
+    module.exports = router;*/
 
 
 module.exports = router;

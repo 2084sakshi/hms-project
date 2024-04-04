@@ -11,7 +11,7 @@ router.post('/adduser', adminController.addUser);
 router.get('/users',adminController.viewAllUsers);
 router.delete('/users/:userId', adminController.removeUser);
 router.get('/doctors', adminController.viewAllDoctors);
-router.get('/appointments',  adminController.viewAllAppointments);
+
 router.put('/doctors/approve/:doctorId', adminController.approveDoctor);
 router.put('/doctors/reject/:doctorId', adminController.rejectDoctor);
 

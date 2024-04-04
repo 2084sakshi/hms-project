@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema({
  //apptid: { type: mongoose.Schema.Types.ObjectId, auto: true }, // Primary Key
-  patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true, index: true }, // Foreign Key
+  patient: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, index: true }, // Foreign Key
   doctor: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor', required: true, index: true }, // Foreign Key
   date: { type: Date, required: true, validate: [validateFutureDate, 'Date must be in the future'] },
   time: { type: String, required :true },

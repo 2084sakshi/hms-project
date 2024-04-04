@@ -1,10 +1,15 @@
 const patientService = require('../services/patientservice');
 const appointmentService = require('../services/appointmentservice');
 
-const viewAppointments = (req, res) => {
-  const patientId = req.user.id; // Assuming the user object contains the patient's ID
-  const appointments = appointmentService.getAppointmentsByPatientId(patientId);
-  res.json(appointments);
+const viewAppointments = async(req, res) => {
+  try {
+    const patientId = req.params.id;
+    const appointments = await appointmentService.getAppointmentsByPatientId(patientId);
+    res.json(appointments);
+  } catch (error) {
+    console.error('Error fetching appointments:', error);
+    res.status(500).json({ error: 'Failed to fetch appointments' });
+  }
 };
 
 const bookAppointment = async (req, res) => {

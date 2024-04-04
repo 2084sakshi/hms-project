@@ -1,41 +1,29 @@
 const Appointment = require('../models/appointment');
 const moment = require('moment');
-
-const getAllAppointments = async () => {
+// Backend route to fetch appointments for a specific doctor
+const getAppointmentsByDoctorId = async (doctorId) => {
   try {
-    const appointments = await Appointment.find()
-      .populate({
-        path: 'doctor',
-        select: 'name', // Include only name, exclude _id
-      })
-      .populate({
-        path: 'patient',
-        select: 'name', // Include only name, exclude _id
-      })
-      .select('time status bookingDate doctor patient')
-      .lean(); // Convert Mongoose document to plain JavaScript object
-
-    // Format bookingDate and remove doctor and patient _id
-    const formattedAppointments = appointments.map((appointment) => ({
-      _id: appointment._id,
-      patient: {
-        name: appointment.patient.name,
-      },
-      doctor: {
-        name: appointment.doctor.name,
-      },
-      time: appointment.time,
-      status: appointment.status,
-      bookingDate: moment(appointment.bookingDate).format('DD-MM-YYYY'),
-    }));
-
-    return formattedAppointments;
+    const appointments = await Appointment.find({ doctor: doctorId })
+      .populate('doctor', 'name')
+      .populate('patient', 'name')
+      .select('time status bookingDate doctor patient date');
+      const formattedAppointments = appointments.map(appointment => ({
+        _id: appointment._id,
+        patient: appointment.patient,
+        doctor: appointment.doctor,
+        time: appointment.time,
+        status: appointment.status,
+        bookingDate: formatDate(appointment.bookingDate),
+        date: moment(appointment.date).format('DD-MM-YYYY'),
+      }));
+  
+      return formattedAppointments;
   } catch (error) {
-    console.error('Error getting all appointments:', error.message);
-    throw error;
+    throw new Error('Error fetching appointments');
   }
 };
-/*const getAllAppointments = async () => {
+
+const getAllAppointments = async () => {
   try {
     const appointments = await Appointment.find()
       .populate('patient', 'name') // Populate patient with only the 'name' field
@@ -62,34 +50,48 @@ const getAllAppointments = async () => {
 function formatDate(date) {
   const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
   return new Date(date).toLocaleDateString('en-IN', options);
-}*/
+}
 
 const approveAppointment = async (appointmentId) => {
-  // Implement logic to update the approval status of an appointment in the database
   try {
-    const updatedappointment = await Appointment.findByIdAndUpdate(
-      appointmentId,
-      { $set: { status: 'approved' } },
-      { new: true }
+    const updatedAppointment = await Appointment.findOneAndUpdate(
+      { _id: appointmentId },
+      { $set: { status: 'approved' } }
     );
-    if (!updatedappointment) {
-      throw new Error('Appointment not found or already approved/rejected');
-    }
-    return updatedappointment;
+   
+    return updatedAppointment;
   } catch (error) {
-    console.error('Error approving appointment:', error.message);
+    console.error('Error approving appointment:', error);
     throw error;
   }
 };
-
+/*
 const getAppointmentsByDoctorId = (doctorId) => {
   // Implement logic to fetch appointments for a specific doctor from the database
   return Appointment.find({ doctor: doctorId });
 };
+*/
 
-const getAppointmentsByPatientId = (patientId) => {
-  // Implement logic to fetch appointments for a specific patient from the database
-  return Appointment.find({ patient: patientId });
+const getAppointmentsByPatientId = async (patientId) => {
+  try {
+    const appointments = await Appointment.find({ patient: patientId })
+      .populate('doctor', 'name')
+      .populate('patient', 'name')
+      .select('time status bookingDate doctor patient date');
+      const formattedAppointments = appointments.map(appointment => ({
+        _id: appointment._id,
+        patient: appointment.patient,
+        doctor: appointment.doctor,
+        time: appointment.time,
+        status: appointment.status,
+        bookingDate: formatDate(appointment.bookingDate),
+        date: moment(appointment.date).format('DD-MM-YYYY'),
+      }));
+  
+      return formattedAppointments;
+  } catch (error) {
+    throw new Error('Error fetching appointments');
+  }
 };
 
 const bookAppointment = async (patient, doctor, date,time) => {
@@ -105,6 +107,7 @@ const bookAppointment = async (patient, doctor, date,time) => {
       status: 'pending',
       // Other appointment details as needed
     });
+    c
     return await newAppointment.save();
   } catch (error) {
     console.error('Error booking appointment:', error.message);
@@ -120,9 +123,6 @@ const rejectAppointment = async (appointmentId) => {
       { $set: { status: 'rejected' } },
       { new: true }
     );
-    if (!updatedappointment) {
-      throw new Error('Appointment not found or already approved/rejected');
-    }
     return updatedappointment;
   } catch (error) {
     console.error('Error rejecting appointment:', error.message);

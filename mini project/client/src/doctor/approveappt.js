@@ -1,56 +1,100 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import DoctorHeader from './doctorheader';
 
 function DoctorApproveAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
-  // Dummy data for appointments (replace with actual data fetching)
+  // Fetch appointments from the backend
   useEffect(() => {
-    // Simulated fetch from backend
     const fetchAppointments = async () => {
-      // Simulated API endpoint
-      const dummyAppointments = [
-        {
-          id: 1,
-          patientName: 'John Doe',
-          date: '2024-02-10',
-          time: '10:00 AM',
-        },
-        {
-          id: 2,
-          patientName: 'Jane Smith',
-          date: '2024-02-12',
-          time: '2:30 PM',
-        },
-        {
-          id: 3,
-          patientName: 'Bob Johnson',
-          date: '2024-01-15',
-          time: '3:45 PM',
-        },
-        // Add more dummy data as needed
-      ];
-
-      setAppointments(dummyAppointments);
+      try {
+        const response = await axios.get('http://localhost:5000/api/doctor/65fb1ad51c177f3f9b3d7934/appointments');
+        const pendingAppointments = response.data.filter(appointment => appointment.status === 'pending');
+        setAppointments(pendingAppointments);
+      } catch (error) {
+        console.error('Error fetching appointments:', error);
+      }
     };
 
     fetchAppointments();
   }, []);
-
-  const handleApproveAppointment = (appointment) => {
-    // Logic to approve appointment (to be implemented)
-    console.log('Appointment approved:', appointment);
-    // You may want to update the appointment status and re-fetch appointments from the backend
-    setSelectedAppointment(null);
+/*
+  const handleApproveAppointment = async (appointmentId) => {
+    try {
+      await axios.put(`http://localhost:5000/api/doctor/appointmentapprove/${appointmentId}`);
+      // If the request is successful, update the local state or re-fetch appointments
+      // Update local state example:
+      const updatedAppointments = appointments.map(appointment => {
+        if (appointment._id === appointmentId) {
+          return { ...appointment, status: 'approved' };
+        }
+        return appointment;
+      });
+      setAppointments(updatedAppointments);
+    } catch (error) {
+      console.error('Error approving appointment:', error);
+    }
   };
 
-  const handleRejectAppointment = (appointment) => {
-    // Logic to reject appointment (to be implemented)
-    console.log('Appointment rejected:', appointment);
-    // You may want to update the appointment status and re-fetch appointments from the backend
-    setSelectedAppointment(null);
+  const handleRejectAppointment = async (appointmentId) => {
+    try {
+      await axios.put(`http://localhost:5000/api/doctor/appointmentcancel/${appointmentId}`);
+      // If the request is successful, update the local state or re-fetch appointments
+      // Update local state example:
+      const updatedAppointments = appointments.map(appointment => {
+        if (appointment._id === appointmentId) {
+          return { ...appointment, status: 'rejected' };
+        }
+        return appointment;
+      });
+      setAppointments(updatedAppointments);
+    } catch (error) {
+      console.error('Error rejecting appointment:', error);
+    }
+  };*/
+const  handleApproveAppointment = async (appointmentId) => {
+    try {
+      console.log('Approving appointment:', appointmentId)
+      const response = await axios.put(`http://localhost:5000/api/doctor/appointmentapprove/${appointmentId}`);
+
+    console.log('Appointment approved successfully:', response.data);
+      // If the request is successful, update the local state or re-fetch appointments
+      // Update local state example:
+      const updatedAppointments = appointments.map(appointment => {
+        if (appointment._id === appointmentId) {
+          return { ...appointment, status: 'approved' };
+        }
+        return appointment;
+      });
+      setAppointments(updatedAppointments);
+      console.log('Appointment approved successfully');
+    } catch (error) {
+      console.error('Error approving appointment:', error);
+      // Handle error, show an error message to the user, etc.
+    }
   };
+  
+  const handleRejectAppointment = async (appointmentId) => {
+    try {
+      await axios.put(`http://localhost:5000/api/doctor/appointmentcancel/${appointmentId}`);
+      // If the request is successful, update the local state or re-fetch appointments
+      // Update local state example:
+      const updatedAppointments = appointments.map(appointment => {
+        if (appointment._id === appointmentId) {
+          return { ...appointment, status: 'rejected' };
+        }
+        return appointment;
+      });
+      setAppointments(updatedAppointments);
+      console.log('Appointment rejected successfully');
+    } catch (error) {
+      console.error('Error rejecting appointment:', error);
+      // Handle error, show an error message to the user, etc.
+    }
+  };
+  
 
   return (
     <div>
@@ -68,13 +112,13 @@ function DoctorApproveAppointment() {
           </thead>
           <tbody>
             {appointments.map((appointment) => (
-              <tr key={appointment.id} className={selectedAppointment === appointment ? 'selected' : ''}>
-                <td>{appointment.patientName}</td>
+              <tr key={appointment._id} className={selectedAppointment === appointment ? 'selected' : ''}>
+                <td>{appointment.patient.name}</td>
                 <td>{appointment.date}</td>
                 <td>{appointment.time}</td>
                 <td>
-                  <button onClick={() => handleApproveAppointment(appointment)}>Approve</button>
-                  <button onClick={() => handleRejectAppointment(appointment)}>Reject</button>
+                  <button onClick={() => handleApproveAppointment(appointment._id)}>Approve</button>
+                  <button onClick={() => handleRejectAppointment(appointment._id)}>Reject</button>
                 </td>
               </tr>
             ))}

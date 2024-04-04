@@ -56,9 +56,10 @@ function UserList() {
       <header>
         <Header onLogout={() => {}} />
       </header>
-      <div>
+      <div className='user-list-header '>
         <h1>User List</h1>
-        <table>
+        <div className='user-list-table'>
+        <table >
           <thead>
             <tr>
               <th>Sr No</th>
@@ -66,7 +67,7 @@ function UserList() {
               <th>Email</th>
               <th>Gender</th>
               <th>Phone Number</th>
-              <th>Is Doctor</th>
+        
               <th>Age</th>
               <th>Actions</th>
             </tr>
@@ -79,7 +80,6 @@ function UserList() {
                 <td>{user.email}</td>
                 <td>{user.gender}</td>
                 <td>{user.mobile}</td>
-                <td>{user.isDoctor ? 'Yes' : 'No'}</td>
                 <td>{user.age}</td>
                 <td>
                   <button onClick={() => handleRemoveUser(user.userId)}>Remove</button>
@@ -88,6 +88,7 @@ function UserList() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </>
   );

@@ -1,28 +1,32 @@
-const jwt = require("jsonwebtoken");
- const authenticateUser= async (req, res, next) => {
-  try {
+// authMiddleware.js
 
-    const token = req.headers["authorization"].split(" ")[1];
+const jwt = require('jsonwebtoken');
+const config = require('./config'); // Your configuration file
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return res.status(401).send({
-          message: "auth failed",
-          success: false,
-        });
-      } else {
-        req.body.userId = decoded.id;
-        next();
-      }
-    });
-  } catch (error) {
-    console.log(error);
-    return res
-      .status(401)
-      .send({
-        message: "Failed to authorize {jwt auth middleware}",
-        success: false,
-      });
+// Middleware function to verify JWT tokens and enforce role-based authorization
+const authMiddleware = (requiredRole) => (req, res, next) => {
+  // Get the token from the request headers
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ message: 'Unauthorized: No token provided' });
   }
+
+  // Verify the token
+  jwt.verify(token, config.jwtSecret, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+    }
+    
+    // Check if the user has the required role
+    if (decoded.role !== requiredRole) {
+      return res.status(403).json({ message: 'Forbidden: Insufficient permissions' });
+    }
+
+    // Attach the decoded user data to the request object for further use
+    req.user = decoded;
+    next(); // Call the next middleware or route handler
+  });
 };
-module.exports = { authenticateUser };
+
+module.exports = authMiddleware;

@@ -20,13 +20,14 @@ function PatientHeader({ onLogout}) {
   };
 
   return (
+    
     <header>
-        <nav  className='patient-navbar'>
+ <nav  className='patient-navbar'>
       
-        <img src={logoUrl} alt="Medconnect360" />
+      <img src={logoUrl} alt="Medconnect360" />
        
     
-    
+     
       <ul className='patient-header'>
       <li  className='nav-links'><Link to="/patient">Dashboard</Link></li>
       <li  className='nav-links'><Link to="/patient/appointment-booking">Book Appointment</Link></li>
@@ -39,10 +40,8 @@ function PatientHeader({ onLogout}) {
     </ul>
         <button onClick={handleLogout}>Logout</button>
       </nav>
-      <div>
-      <h5>Hi, User</h5>
-      </div>
     </header>
+
   );
 }
 

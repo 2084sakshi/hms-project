@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import DoctorHeader from './doctorheader';
 
+
 function DoctorProfile() {
   const [editMode, setEditMode] = useState(false);
   const [profileData, setProfileData] = useState({
@@ -36,11 +37,11 @@ function DoctorProfile() {
   return (
     <div>
       <DoctorHeader />
-      <div>
+      <div className = "doctor-main">
         <h2>Your Profile</h2>
 
         {editMode ? (
-          <div>
+          <div className='card-1'>
             {/* Include fields for editing profile information */}
             <div>
               <label>Full Name: <input type="text" value={profileData.fullName} onChange={(e) => handleInputChange('fullName', e.target.value)} /></label>

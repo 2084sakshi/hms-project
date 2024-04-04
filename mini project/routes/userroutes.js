@@ -12,7 +12,7 @@ const router = express.Router();
 // router.put('/settings/notification', authenticateUser, patientController.notificationSettings);
 // router.put('/settings/password', authenticateUser, patientController.changePassword);
 
-router.get('/appointments', patientController.viewAppointments);
+router.get('/:id/appointments', patientController.viewAppointments);
  router.post('/book-appointment', patientController.bookAppointment);
  router.get('/medical-history', patientController.viewMedicalHistory);
  router.get('/profile', patientController.viewProfile);

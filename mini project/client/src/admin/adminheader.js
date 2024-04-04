@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './../css/admin.css';
+import LogoUrl from './../image/logo.svg';
 
 function Header({ onLogout }) {
-  const logoUrl = process.env.PUBLIC_URL + '/path/to/your/logo.png';
+  /*const logoUrl = process.env.PUBLIC_URL + '/path/to/your/logo.png';*/
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,7 +21,7 @@ function Header({ onLogout }) {
   return (
     <header className='admin-header'>
       <div className="logo-container inline-block">
-        <img src={logoUrl} alt="Logo" />
+        <img src={LogoUrl} alt="Logo" />
         <h5>Medconnect360</h5>
       </div>
       <nav className="quick-links">

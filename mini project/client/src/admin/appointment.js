@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './adminheader';
-import './../css/admin.css'
+import './../css/admin.css';
 
 function Appointments() {
   // Simulated data

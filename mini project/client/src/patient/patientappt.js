@@ -1,14 +1,26 @@
-// ViewAppointment.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PatientHeader from './patientheader';
-import './../css/patient.css';
+
 function ViewAppointment() {
-  // Mock data for demonstration purposes
-  const appointments = [
-    { date: '2024-02-10', startTime: '10:00 AM', endTime: '11:00 AM', doctor: 'Dr. Smith', status: 'Confirmed' },
-    { date: '2024-02-15', startTime: '02:30 PM', endTime: '03:30 PM', doctor: 'Dr. Johnson', status: 'Pending' },
-    // Add more appointments as needed
-  ];
+  const [appointments, setAppointments] = useState([]);
+    // Assuming you have the patient ID
+    const patientId = '65f99f567329da8cbe928470';
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        
+        const response = await axios.get(`http://localhost:5000/api/patient/${patientId}/appointments`);
+        console.log('Appointments data:', response.data);
+        setAppointments(response.data);
+      } catch (error) {
+        console.error('Error fetching appointments:', error);
+      }
+    };
+
+    fetchAppointments();
+  }, [patientId]);
 
   return (
     <div>
@@ -18,22 +30,20 @@ function ViewAppointment() {
         <table>
           <thead>
             <tr>
-              <th>Sr. No</th>
+            <th>Doctor</th>
               <th>Date</th>
-              <th>Start Time</th>
-              <th>End Time</th>
-              <th>Doctor</th>
+              <th>Time</th>
+              <th>BookingDate</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {appointments.map((appointment, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{appointment.date}</td>
-                <td>{appointment.startTime}</td>
-                <td>{appointment.endTime}</td>
-                <td>{appointment.doctor}</td>
+              <tr key={appointment._id}>
+                 <td>{appointment.doctor.name}</td>
+                 <td>{appointment.date}</td>
+                <td>{appointment.time}</td>
+                <td>{appointment.bookingDate}</td>
                 <td>{appointment.status}</td>
               </tr>
             ))}

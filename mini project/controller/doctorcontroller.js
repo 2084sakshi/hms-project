@@ -4,34 +4,38 @@ const appointmentService = require('../services/appointmentservice');
 
 const approveAppointment = async (req, res) => {
   try {
-    const { appointmentId, doctorId } = req.body;
-    if (!appointmentId) {
-      return res.status(400).json({ error: 'Incomplete data provided' });
-    }
-    const updatedAppointment = await appointmentService.approveAppointment(appointmentId, doctorId);
+    const { appointmentId } = req.params;
+    const updatedAppointment = await appointmentService.approveAppointment(appointmentId);
     res.json({ message: 'Appointment approved successfully', appointment: updatedAppointment });
   } catch (error) {
     res.status(500).json({ error: error.message });
-  }
-};
-const rejectAppointment = async (req, res) => {
-  try {
-    const { appointmentId, doctorId } = req.body;
-    if (!appointmentId) {
-      return res.status(400).json({ error: 'Incomplete data provided' });
-    }
-    const updatedAppointment = await appointmentService.rejectAppointment(appointmentId, doctorId);
-    res.json({ message: 'Appointment rejected successfully', appointment: updatedAppointment });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error approving appointment:', error);
   }
 };
 
-const viewAppointments = (req, res) => {
-  const doctorId = req.user.id; // Assuming the user object contains the doctor's ID
-  const appointments = appointmentService.getAppointmentsByDoctorId(doctorId);
-  res.json(appointments);
+const rejectAppointment = async (req, res) => {
+  try {
+    const { appointmentId } = req.body;
+ 
+    const updatedAppointment = await appointmentService.rejectAppointment(appointmentId);
+    res.json({ message: 'Appointment rejected successfully', appointment: updatedAppointment });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+    console.error('Error rejecting appointment:', error);
+  }
 };
+
+const viewAppointments = async (req, res) => {
+  try {
+    const doctorId = req.params.id;
+    const appointments = await appointmentService.getAppointmentsByDoctorId(doctorId);
+    res.json(appointments);
+  } catch (error) {
+    console.error('Error fetching appointments:', error);
+    res.status(500).json({ error: 'Failed to fetch appointments' });
+  }
+};
+
 
 const viewUpcomingAppointments = (req, res) => {
   const doctorId = req.user.id; // Assuming the user object contains the doctor's ID
