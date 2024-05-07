@@ -1,0 +1,103 @@
+/*body{
+    margin:0;
+}
+.ant-btn-primary{
+    background-color: #1890ff;
+    border-color: #1890ff;
+    color: #fff;
+}
+.text{
+    
+    font-size: 1rem;
+   
+}
+.card-title{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.card{
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+:root{
+    --background-color:#1a4872;
+    --button-color:#2273c0;
+    --secodnary-color: #081a7e;
+}
+.authentication{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--background-color);
+}
+.authentication__form{
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.authentication__form .card-title{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-left:-20px;
+    background-color: var(--secodnary-color);
+    max-width: max-content!important;
+    padding: 5px 10px!important;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+input{
+    border-radius:2px!important;
+    border: 1px solid #d9d9d9!important;
+    height:40px!important;
+    padding: 0 11px!important;
+    font-size: 14px!important;
+}
+label{
+    font-size: 14px!important;
+    font-weight: 500!important;
+}
+.primary-btn{
+    background-color: var(--button-color)!important;
+    border-color: #081a7e!important;
+    color: #fff!important;
+    height: 40px!important;
+    width:100%!important;
+    font-size: 14px!important;
+}
+.primary-btn:hover{
+    background-color: #081a7e!important;
+    border-color: #081a7e!important;
+    color: #fff!important;
+}
+.primary-btn:focus{
+    background-color: #081a7e!important;
+    border-color: #081a7e!important;
+    color: #fff!important;
+}
+.primary-btn:active{
+    background-color: #081a7e!important;
+    border-color: #081a7e!important;
+    color: #fff!important;
+}
+.anchor{
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.anchor:hover{
+    
+    text-decoration: underline;
+}
+*/
