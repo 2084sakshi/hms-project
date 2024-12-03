@@ -4,7 +4,7 @@ const { authenticateUser } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
- Define routes for patient functionalities
+ /*Define routes for patient functionalities*/
  router.get('/appointments', authenticateUser, patientController.viewAppointments);
  router.post('/appointments/book', authenticateUser, patientController.bookAppointment);
  router.get('/medical-history', authenticateUser, patientController.viewMedicalHistory);
