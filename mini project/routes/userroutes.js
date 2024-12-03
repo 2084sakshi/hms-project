@@ -1,17 +1,17 @@
 const express = require('express');
 const patientController = require('../controller/patientcontroller');
-//const { authenticateUser } = require('../middleware/authMiddleware');
+const { authenticateUser } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// Define routes for patient functionalities
-// router.get('/appointments', authenticateUser, patientController.viewAppointments);
-// router.post('/appointments/book', authenticateUser, patientController.bookAppointment);
-// router.get('/medical-history', authenticateUser, patientController.viewMedicalHistory);
-// router.put('/profile', authenticateUser, patientController.changeProfile);
-// router.put('/settings/notification', authenticateUser, patientController.notificationSettings);
-// router.put('/settings/password', authenticateUser, patientController.changePassword);
-
+ Define routes for patient functionalities
+ router.get('/appointments', authenticateUser, patientController.viewAppointments);
+ router.post('/appointments/book', authenticateUser, patientController.bookAppointment);
+ router.get('/medical-history', authenticateUser, patientController.viewMedicalHistory);
+ router.put('/profile', authenticateUser, patientController.changeProfile);
+router.put('/settings/notification', authenticateUser, patientController.notificationSettings);
+ router.put('/settings/password', authenticateUser, patientController.changePassword);
+/*
 router.get('/:id/appointments', patientController.viewAppointments);
  router.post('/book-appointment', patientController.bookAppointment);
  router.get('/medical-history', patientController.viewMedicalHistory);
@@ -19,7 +19,7 @@ router.get('/:id/appointments', patientController.viewAppointments);
  router.put('/updateprofile', patientController.changeProfile);
  router.put('/notification', patientController.notificationSettings);
 router.put('/changepasword', patientController.changePassword);
-
+*/
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
